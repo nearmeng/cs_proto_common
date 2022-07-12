@@ -1,0 +1,12 @@
+
+message CS_HEAD
+{
+	required	int32	msgid	=	1;
+	optional	int32	seqid	=	2;
+}
+
+message SC_HEAD
+{
+	required	int32	msgid	=	1;
+	optional	int32	seqid	=	2;
+}
