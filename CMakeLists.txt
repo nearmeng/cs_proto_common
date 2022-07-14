@@ -14,6 +14,14 @@ fetch_content(thirdparty https://github.com/nearmeng/thirdparty.git master)
 SET(BASE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 preprocess_proto(proto)
 
+if(MSVC)
+    add_compile_options(
+        $<$<CONFIG:>:/MT> #---------|
+        $<$<CONFIG:Debug>:/MTd> #---|-- Statically link the runtime libraries
+        $<$<CONFIG:Release>:/MT> #--|
+    )
+endif()
+
 file (GLOB_RECURSE SRC_FILES "proto/*.cc")
 
 add_library(${TARGET_NAME} STATIC ${SRC_FILES})
