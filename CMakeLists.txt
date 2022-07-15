@@ -10,16 +10,8 @@ FetchContent_MakeAvailable(cmake_tool)
 
 fetch_content(thirdparty https://github.com/nearmeng/thirdparty.git master)
 
-SET(BASE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
+init_project()
 preprocess_proto(proto)
-
-if(MSVC)
-    add_compile_options(
-        $<$<CONFIG:>:/MT> #---------|
-        $<$<CONFIG:Debug>:/MTd> #---|-- Statically link the runtime libraries
-        $<$<CONFIG:Release>:/MT> #--|
-    )
-endif()
 
 file (GLOB_RECURSE SRC_FILES "proto/*.cc")
 
