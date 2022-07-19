@@ -1,0 +1,14 @@
+enum COMMON_MESSAGE_ID
+{
+	common_sc_message_begin	=	0;
+
+    sc_error_code				=   1;
+
+	common_sc_message_end		=	50;
+}
+
+message SC_ERROR_CODE
+{
+    optional    int32   error_code  =   1;
+    optional    uint64  param       =   2;
+}
